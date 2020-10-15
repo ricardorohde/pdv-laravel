@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -31,8 +20,41 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('fornecedores/cadastro', ['as' => 'adm.fornecedores.cadFornecedores', 'uses' => 'App\Http\Controllers\PageController@cadFornecedores']);
 	Route::get('produtos/cadastro', ['as' => 'adm.produtos.produtos-cadastro', 'uses' => 'App\Http\Controllers\PageController@produtosCadastro']);
 	Route::get('produtos/excluir', ['as' => 'adm.produtos.produtos-excluir', 'uses' => 'App\Http\Controllers\PageController@produtosExcluir']);
+	Route::get('pdv', ['as' => 'pdv.pdv', 'uses' => 'App\Http\Controllers\PageController@pdv']);
+	Route::post('cadastrar-novo-fornecedor', ['as' => 'cadastro.fornecedor', 'uses' => 'App\Http\Controllers\Adm\FornecedoresController@insertFornecedor']);
 	
-	/** old */
+	/** 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Original
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 	Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
 	Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
 	Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
@@ -47,8 +69,4 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-});
-
-Route::get('/pdv', function (){
-	return view('pdv.pdv');
 });

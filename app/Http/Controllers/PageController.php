@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 class PageController extends Controller
 {   
+    
+     /**
+     * Display icons page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function  pdv()
+    {
+        return view('pdv.pdv');
+    }
     /**
      * Display icons page
      *

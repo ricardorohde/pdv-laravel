@@ -722,12 +722,37 @@ demo = {
     marker.setMap(map);
   },
 
-  showNotification: function(from, align) {
-    color = Math.floor((Math.random() * 4) + 1);
+  // showNotification: function(success, from, align) {
+  //   if($success === 'success'){
+  //     color = 28a745;
+  //   }
+  //   if($success === 'unsuccess'){
+  //     color = dc3545;
+  //   }
+  //   if($success === 'alert'){
+  //     color = fd7e14
+  //   }
 
+  //   $.notify({
+  //     icon: "tim-icons icon-bell-55",
+  //     message: "Welcome to <b>Black Dashboard</b> - a beautiful freebie for every web developer."
+
+  //   }, {
+  //     type: type[color],
+  //     timer: 8000,
+  //     placement: {
+  //       from: from,
+  //       align: align
+  //     }
+  //   });
+  // }
+  showNotification: function(message, from, align) {
+    color = 2;
+
+    // color = 1;
     $.notify({
       icon: "tim-icons icon-bell-55",
-      message: "Welcome to <b>Black Dashboard</b> - a beautiful freebie for every web developer."
+      message: message
 
     }, {
       type: type[color],

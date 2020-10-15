@@ -16,7 +16,10 @@ class CreateFornecedorsTable extends Migration
         Schema::create('fornecedors', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('fornecedor');
+            $table->string('fornecedor')->unique();
+            $table->string('fantasia');
+            $table->string('cnpj',15)->unique();
+            $table->string('telefone');
             $table->index(["fornecedor"]);
         });
     }

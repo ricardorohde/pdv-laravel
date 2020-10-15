@@ -19,6 +19,10 @@
         <!-- CSS -->
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
+        
+        <!-- Bootstrap core CSS -->
+        {{-- <link href = {{ asset("/black/css/bootstrap.css") }} rel="stylesheet" /> --}}
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()

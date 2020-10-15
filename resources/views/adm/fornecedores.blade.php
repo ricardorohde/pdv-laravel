@@ -7,9 +7,8 @@
         <span class="title">Meus Fornecedores</span>
         <div class="button-action">
           <a href="{{ route('adm.fornecedores.cadFornecedores')  }}" ">
-            <button type="button" class="btn btn-success" >
+            <button type="button" class="btn btn-primary" >
               Cadastrar
-              {{-- <i class="tim-icons icon-simple-add"></i> --}}
             </button>
         </a>
         </div>
@@ -45,4 +44,3 @@
     </div>
   </div>
 @endsection
-{{-- linear-gradient(180deg, rgba(47,47,212,1) 0%, rgba(46,88,235,1) 100%); --}}
