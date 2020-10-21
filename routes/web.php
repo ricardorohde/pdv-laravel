@@ -16,13 +16,20 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('estoque', ['as' => 'adm.estoque', 'uses' => 'App\Http\Controllers\PageController@estoque']);
 	Route::get('financeiro', ['as' => 'adm.financeiro', 'uses' => 'App\Http\Controllers\PageController@financeiro']);
-	Route::get('fornecedores', ['as' => 'adm.fornecedores', 'uses' => 'App\Http\Controllers\PageController@fornecedores']);
+	Route::get('pdv', ['as' => 'pdv.pdv', 'uses' => 'App\Http\Controllers\PageController@pdv']);
+	/**************************** Fornecedores ********************************/
+	/* List */
+	Route::get('fornecedores', ['as' => 'adm.fornecedores', 'uses' => 'App\Http\Controllers\Adm\FornecedoresController@pageFornecedores']);
+	/* Cadastro/Insert */
 	Route::get('fornecedores/cadastro', ['as' => 'adm.fornecedores.cadFornecedores', 'uses' => 'App\Http\Controllers\PageController@cadFornecedores']);
+	Route::post('fornecedores/insertFornecedor', ['as' => 'cadastro.fornecedor', 'uses' => 'App\Http\Controllers\Adm\FornecedoresController@insertFornecedor']);
+	/* Edit/Update */
+	Route::get('fornecedor/edit/{id}', ['as' => 'adm.fornecedores.editFornecedor', 'uses' => 'App\Http\Controllers\Adm\FornecedoresController@pageEditFornecedor']);
+	Route::put('fornecedores/updateFornecedor', ['as' => 'update.fornecedor', 'uses' => 'App\Http\Controllers\Adm\FornecedoresController@updateFornecedor']);
+
+	/**************************** Produtos ********************************/
 	Route::get('produtos/cadastro', ['as' => 'adm.produtos.produtos-cadastro', 'uses' => 'App\Http\Controllers\PageController@produtosCadastro']);
 	Route::get('produtos/excluir', ['as' => 'adm.produtos.produtos-excluir', 'uses' => 'App\Http\Controllers\PageController@produtosExcluir']);
-	Route::get('pdv', ['as' => 'pdv.pdv', 'uses' => 'App\Http\Controllers\PageController@pdv']);
-	Route::post('cadastrar-novo-fornecedor', ['as' => 'cadastro.fornecedor', 'uses' => 'App\Http\Controllers\Adm\FornecedoresController@insertFornecedor']);
-	
 	/** 
 	 * 
 	 * 

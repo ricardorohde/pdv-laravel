@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Adm\FornecedoresController;
 
 class PageController extends Controller
 {   
@@ -44,16 +45,6 @@ class PageController extends Controller
         return view('adm.produtos.produtos-excluir');
     }
 
-
-    /**
-     * Display icons page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function fornecedores()
-    {
-        return view('adm.fornecedores');
-    }
    
     /**
      * Display icons page

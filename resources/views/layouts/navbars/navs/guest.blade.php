@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent fixed-top">
+{{-- <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent fixed-top">
     <div class="container-fluid">
         <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">
@@ -35,4 +35,4 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> --}}

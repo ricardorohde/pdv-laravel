@@ -1,10 +1,15 @@
-@extends('layouts.app', ['page' => __('Cadastrar Fornecedor'), 'pageSlug' => 'fornecedores'])
+@extends('layouts.app', ['page' => __('Editar Fornecedor'), 'pageSlug' => 'fornecedores'])
 
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="container-title">
-                <span class="title">Cadastrar Fornecedor</span>
+                <span class="title">Editar Fornecedor <span style="color: rgba(0, 0, 0, 0.2);"> - {{ $data->fornecedor }}
+                        #{{ $data->id }}</span> </span>
+                {{-- <span class="title">Editar Fornecedor <span
+                        style="color: rgba(0, 0, 0, 0.2);"> - {{ $data->fornecedor }} </span> <i
+                        class="trash tim-icons icon-trash-simple"></i></span> --}}
+
                 <div class="button-action">
                     <a href="{{ route('adm.fornecedores') }}">
                         <button type="button" class="btn btn-outline-danger">Cancelar</button>
@@ -18,7 +23,7 @@
 
                     {{-- <form action="{{ route('cadastro.fornecedor') }}" method="post"
                         name="formCadForn"> --}}
-                        <form name="formCadForn">
+                        <form name="formEditForn">
                             @csrf
                             <div class="subsecao">
                                 <p>1. Dados de Cadastro</p>
@@ -27,13 +32,15 @@
                                 <div class="form-row">
                                     <div class="left-row form-group">
                                         <label class="required" for="razao">Razão Social</label>
-                                        <input class="form-control" type="text" id="razao" name="razao">
+                                        <input value="{{ $data->fornecedor }}" class="form-control" type="text" id="razao"
+                                            name="razao">
                                         <span id="error-razao" class="error-message d-none"></span>
                                     </div>
 
                                     <div class="right-row form-group">
                                         <label class="required" for="cnpj">CNPJ</label>
-                                        <input class="form-control" type="text" id="cnpj" name="cnpj" maxlength="18">
+                                        <input value="{{ $data->cnpj }}" class="form-control" type="text" id="cnpj"
+                                            name="cnpj" readonly="readonly" maxlength="18">
                                         <span id="error-cnpj" class="error-message d-none"></span>
                                     </div>
                                 </div>
@@ -41,14 +48,16 @@
                                 <div class="form-row">
                                     <div class="left-row form-group">
                                         <label class="required" for="fantasia">Fantasia</label>
-                                        <input class="form-control" type="text" id="fantasia" name="fantasia">
+                                        <input value="{{ $data->fantasia }}" class="form-control" type="text" id="fantasia"
+                                            name="fantasia">
                                         <span id="error-fan" class="error-message d-none"></span>
                                     </div>
 
                                     <div class="right-row form-group">
                                         <label for="tel">Telefone</label>
-                                        <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"
-                                            class="form-control" type="tel" id="tel" name="tel">
+                                        <input value="{{ $data->telefone }}" onkeypress="mask(this, mphone);"
+                                            onblur="mask(this, mphone);" class="form-control" type="tel" id="tel"
+                                            name="tel">
                                     </div>
                                 </div>
                             </div>
@@ -59,20 +68,23 @@
                                     <div id="cep-row" class="form-group">
 
                                         <label for="cep">CEP</label>
-                                        <input class="form-control" type="text" id="cep" name="cep">
+                                        <input value="{{ $data->cep }}" class="form-control" type="text" id="cep"
+                                            name="cep">
                                         <span id="error-cep" class="error-message d-none"></span>
 
                                     </div>
 
                                     <div style="margin-right:20px" class="form-group">
                                         <label for="logradouro">Logradouro</label>
-                                        <input class="form-control" type="text" id="logradouro" name="logradouro">
+                                        <input value="{{ $data->logradouro }}" class="form-control" type="text"
+                                            id="logradouro" name="logradouro">
                                         <span id="error-logradouro" class="error-message d-none"></span>
                                     </div>
 
                                     <div style="width:100px" class="form-group">
                                         <label for="numero">nº</label>
-                                        <input class="form-control" type="text" id="numero" name="numero">
+                                        <input value="{{ $data->numero }}" class="form-control" type="text" id="numero"
+                                            name="numero">
                                         <span id="error-numero" class="error-message d-none"></span>
                                     </div>
 
@@ -81,13 +93,15 @@
                                 <div class="form-row">
                                     <div style="margin-right:20px" class="form-group">
                                         <label for="bairro">Bairro</label>
-                                        <input class="form-control" type="text" id="bairro" name="bairro">
+                                        <input value="{{ $data->bairro }}" class="form-control" type="text" id="bairro"
+                                            name="bairro">
                                         <span id="error-bairro" class="error-message d-none"></span>
                                     </div>
 
                                     <div style="margin-right:20px" class="right-row form-group">
                                         <label for="cidade">Cidade</label>
-                                        <input class="form-control" type="text" id="cidade" name="cidade">
+                                        <input value="{{ $data->cidade }}" class="form-control" type="text" id="cidade"
+                                            name="cidade">
                                         <span id="error-cidade" class="error-message d-none"></span>
                                     </div>
 
@@ -95,33 +109,86 @@
                                         <label for="uf">Estado</label>
                                         <select id="uf" class="form-control" name="uf">
                                             <option value=""></option>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="AP">Amapá</option>
-                                            <option value="AM">Amazonas</option>
-                                            <option value="BA">Bahia</option>
-                                            <option value="CE">Ceará</option>
-                                            <option value="DF">Distrito Federal</option>
-                                            <option value="ES">Espírito Santo</option>
-                                            <option value="GO">Goiás</option>
-                                            <option value="MA">Maranhão</option>
-                                            <option value="MT">Mato Grosso</option>
-                                            <option value="MS">Mato Grosso do Sul</option>
-                                            <option value="MG">Minas Gerais</option>
-                                            <option value="PA">Pará</option>
-                                            <option value="PB">Paraíba</option>
-                                            <option value="PR">Paraná</option>
-                                            <option value="PE">Pernambuco</option>
-                                            <option value="PI">Piauí</option>
-                                            <option value="RJ">Rio de Janeiro</option>
-                                            <option value="RN">Rio Grande do Norte</option>
-                                            <option value="RS">Rio Grande do Sul</option>
-                                            <option value="RO">Rondônia</option>
-                                            <option value="RR">Roraima</option>
-                                            <option value="SC">Santa Catarina</option>
-                                            <option value="SP">São Paulo</option>
-                                            <option value="SE">Sergipe</option>
-                                            <option value="TO">Tocantins</option>
+                                            <option @if ($data->estado == 'AC') selected
+                                                @endif value="AC">Acre</option>
+
+                                            <option @if ($data->estado == 'AL') selected
+                                                @endif value="AL">Alagoas</option>
+                                            
+                                            <option @if ($data->estado == 'AP') selected
+                                                @endif value="AP">Amapá</option>
+
+                                            <option @if ($data->estado == 'AM') selected
+                                                @endif value="AM">Amazonas</option>
+
+                                            <option @if ($data->estado == 'BA') selected
+                                                @endif value="BA">Bahia</option>
+
+                                            <option @if ($data->estado == 'CE') selected
+                                                @endif value="CE">Ceará</option>
+
+                                            <option @if ($data->estado == 'DF') selected
+                                                @endif value="DF">Distrito Federal</option>
+
+                                            <option @if ($data->estado == 'ES') selected
+                                                @endif value="ES">Espírito Santo</option>
+
+                                            <option @if ($data->estado == 'GO') selected
+                                                @endif value="GO">Goiás</option>
+
+                                            <option @if ($data->estado == 'MA') selected
+                                                @endif value="MA">Maranhão</option>
+
+                                            <option @if ($data->estado == 'MT') selected
+                                                @endif value="MT">Mato Grosso</option>
+
+                                            <option @if ($data->estado == 'MS') selected
+                                                @endif value="MS">Mato Grosso do Sul</option>
+
+                                            <option @if ($data->estado == 'MG') selected
+                                                @endif value="MG">Minas Gerais</option>
+
+                                            <option @if ($data->estado == 'PA') selected
+                                                @endif value="PA">Pará</option>
+
+                                            <option @if ($data->estado == 'PB') selected
+                                                @endif value="PB">Paraíba</option>
+
+                                            <option @if ($data->estado == 'PR') selected
+                                                @endif value="PR">Paraná</option>
+
+                                            <option @if ($data->estado == 'PE') selected
+                                                @endif value="PE">Pernambuco</option>
+
+                                            <option @if ($data->estado == 'PI') selected
+                                                @endif value="PI">Piauí</option>
+
+                                            <option @if ($data->estado == 'RJ') selected
+                                                @endif value="RJ">Rio de Janeiro</option>
+
+                                            <option @if ($data->estado == 'RN') selected
+                                                @endif value="RN">Rio Grande do Norte</option>
+
+                                            <option @if ($data->estado == 'RS') selected
+                                                @endif value="RS">Rio Grande do Sul</option>
+
+                                            <option @if ($data->estado == 'RO') selected
+                                                @endif value="RO">Rondônia</option>
+
+                                            <option @if ($data->estado == 'RR') selected
+                                                @endif value="RR">Roraima</option>
+
+                                            <option @if ($data->estado == 'SC') selected
+                                                @endif value="SC">Santa Catarina</option>
+
+                                            <option @if ($data->estado == 'SP') selected
+                                                @endif value="SP">São Paulo</option>
+
+                                            <option @if ($data->estado == 'SE') selected
+                                                @endif value="SE">Sergipe</option>
+
+                                            <option @if ($data->estado == 'TO') selected
+                                                @endif value="TO">Tocantins</option>
                                         </select>
                                     </div>
                                 </div>
@@ -132,14 +199,14 @@
 
                                 <div style="width:90%;" class="left-row form-group">
                                     <label for="razao">Se quiser, faça aqui uma observação.</label>
-                                    <textarea style="max-width:90%;" class="form-control" type="text" id="obs"
-                                        name="obs"></textarea>
+                                    <textarea style="max-width:90%;" class="form-control"
+                                        type="text" id="obs" name="obs">{{ $data->observacao }}</textarea>
                                     <span id="error-obs" class="error-message d-none"></span>
                                 </div>
 
                             </div>
                             <div class="btn-container-form">
-                                <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                <button class="btn btn-primary" type="submit">Atualizar</button>
                             </div>
                         </form>
                 </div>
@@ -149,40 +216,32 @@
 
     <!-------------------- Scripts ----------------------->
 
-    <script>
-        // <!-------------- Mascara CNPJ --------------->
+    <script type="text/javascript">
+        //Verifica se é celular ou telefone para aplicar a mascara
+        var celOrTel = function(val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-0000';
+        };
+        $('#tel').mask(celOrTel);
+
         $(document).ready(function() {
-            $("#cnpj").mask("99.999.999/9999-99");
+            $('#cnpj').mask('00.000.000/0000-00', {
+                reverse: true
+            });
         });
 
-        function mask(o, f) {
-            setTimeout(function() {
-                var v = mphone(o.value);
-                if (v != o.value) {
-                    o.value = v;
-                }
-            }, 1);
-        }
-
-        // <!-------------- Mascara TELEFONE --------------->
-        function mphone(v) {
-            var r = v.replace(/\D/g, "");
-            r = r.replace(/^0/, "");
-            if (r.length > 10) {
-                r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
-            } else if (r.length > 5) {
-                r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
-            } else if (r.length > 2) {
-                r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
-            } else {
-                r = r.replace(/^(\d*)/, "($1");
-            }
-            return r;
-        }
-
-        // <!-------------- Mascara CEP --------------->
         $(document).ready(function() {
-            $("#cep").mask("99999-999");
+            $('#cep').mask('00000-000', {
+                reverse: true
+            });
+        });
+
+        $(document).ready(function() {
+            $("#searchForn").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#tableFornBody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
         });
 
     </script>
@@ -252,11 +311,9 @@
         });
 
     </script>
-
-    <!-- Validação se o campo esta vazio, se os dados ja estao cadastrados e ajax -->
     <script>
         $(function() {
-            $('form[name="formCadForn"]').submit(function(event) {
+            $('form[name="formEditForn"]').submit(function(event) {
                 event.preventDefault();
                 $flag = false;
                 if (document.getElementById("razao").value == "") {
@@ -294,39 +351,20 @@
                 }
 
                 $.ajax({
-                    url: "{{ route('cadastro.fornecedor') }}",
-                    type: "post",
+                    url: "{{ route('update.fornecedor') }}",
+                    type: "put",
                     data: $(this)
                         .serialize(), // .serialize vai pegar todos os campos e formatar e ja devolver certinho
                     dataType: 'json', //tipo de retorno que estamos aguardando
                     success: function(
                         response) { // o que for respondido pela rota vai estar no response
                         if (response.success === true) {
-                            $status = 'success'
+                            // window.location.href="{{ route('adm.fornecedores') }}"
                             $message = response.razao + " - " + response.message;
+                            $status = 'success'
                             demo.showNotification($status, $message, 'bottom', 'right');
-                            document.getElementById('razao').value = '';
-                            document.getElementById('fantasia').value = '';
-                            document.getElementById('cnpj').value = '';
-                            document.getElementById('tel').value = '';
-                            document.getElementById('cep').value = '';
-                            document.getElementById('logradouro').value = '';
-                            document.getElementById('bairro').value = '';
-                            document.getElementById('numero').value = '';
-                            document.getElementById('uf').value = '';
-                            document.getElementById('cidade').value = '';
-                            document.getElementById('obs').value = '';
+
                         } else {
-                            if (response.existeCNPJ == true) {
-                                $("#error-cnpj").html("CNPJ já cadastrado");
-                                $("#cnpj").addClass("is-invalid");
-                                $("#error-cnpj").removeClass("d-none");
-                            }
-                            if (response.existeRazao == true) {
-                                $("#error-razao").html("Razão Social já cadastrado");
-                                $("#razao").addClass("is-invalid");
-                                $("#error-razao").removeClass("d-none");
-                            }
                             $status = 'error'
                             $message = response.message;
                             demo.showNotification($status, $message, 'bottom', 'right');
@@ -339,4 +377,5 @@
         });
 
     </script>
+
 @endsection

@@ -22,10 +22,9 @@
                 </a>
             </li>
         </ul> --}}
-        <div class="copyright">
-            &copy; {{ now()->year }} {{ __('feito com') }} <i class="tim-icons icon-heart-2"></i> {{ __('por') }}
+        <div style="color:gray" class="copyright">
+            &copy; {{ now()->year }}
             <a href="#" target="_blank">{{ __('samfy sistemas web') }}</a>
-            {{-- <a href="https://updivision.com" target="_blank">{{ __('Updivision') }}</a> {{ __('for a better web') }}. --}}
         </div>
     </div>
 </footer>

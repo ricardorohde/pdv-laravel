@@ -19,7 +19,14 @@ class CreateFornecedorsTable extends Migration
             $table->string('fornecedor')->unique();
             $table->string('fantasia');
             $table->string('cnpj',15)->unique();
-            $table->string('telefone');
+            $table->string('telefone')->nullable();
+            $table->string('numero')->nullable();
+            $table->string('logradouro')->nullable();
+            $table->string('bairro')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('estado')->nullable();
+            $table->string('cep')->nullable();
+            $table->string('observacao')->nullable();
             $table->index(["fornecedor"]);
         });
     }
