@@ -107,7 +107,7 @@ class FornecedoresController extends Controller
         // echo json_encode($data);
         // dd();
         // $data = 'abelha';
-        return view('adm.fornecedores', compact('data'));
+        return view('adm.fornecedores.fornecedores', compact('data'));
     }
 
     /**

@@ -255,6 +255,7 @@
 
     <!-- Validação se o campo esta vazio, se os dados ja estao cadastrados e ajax -->
     <script>
+        document.getElementById("razao").focus();
         $(function() {
             $('form[name="formCadForn"]').submit(function(event) {
                 event.preventDefault();
@@ -262,7 +263,7 @@
                 if (document.getElementById("razao").value == "") {
                     $("#razao").addClass("is-invalid");
                     $("#error-razao").removeClass("d-none");
-                    $("#error-razao").html("Este campo não pode estar vazio.");
+                    // $("#error-razao").html("Este campo não pode estar vazio.");
                     // document.getElementById("razao").focus();
                     $flag = true;
                 } else {
@@ -272,7 +273,7 @@
                 if (document.getElementById("fantasia").value == "") {
                     $("#fantasia").addClass("is-invalid");
                     $("#error-fan").removeClass("d-none");
-                    $("#error-fan").html("Este campo não pode estar vazio.");
+                    // $("#error-fan").html("Este campo não pode estar vazio.");
                     // document.getElementById("fantasia").focus();
                     $flag = true;
                 } else {
@@ -282,7 +283,7 @@
                 if (document.getElementById("cnpj").value == "") {
                     $("#cnpj").addClass("is-invalid");
                     $("#error-cnpj").removeClass("d-none");
-                    $("#error-cnpj").html("Este campo não pode estar vazio.");
+                    // $("#error-cnpj").html("Este campo não pode estar vazio.");
                     // document.getElementById("cnpj").focus();
                     $flag = true;
                 } else {

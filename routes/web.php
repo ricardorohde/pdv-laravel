@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+	return view('auth.login');
 });
 
 Auth::routes();
@@ -14,7 +14,6 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('estoque', ['as' => 'adm.estoque', 'uses' => 'App\Http\Controllers\PageController@estoque']);
 	Route::get('financeiro', ['as' => 'adm.financeiro', 'uses' => 'App\Http\Controllers\PageController@financeiro']);
 	Route::get('pdv', ['as' => 'pdv.pdv', 'uses' => 'App\Http\Controllers\PageController@pdv']);
 	/**************************** Fornecedores ********************************/
@@ -28,8 +27,26 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('fornecedores/updateFornecedor', ['as' => 'update.fornecedor', 'uses' => 'App\Http\Controllers\Adm\FornecedoresController@updateFornecedor']);
 
 	/**************************** Produtos ********************************/
-	Route::get('produtos/cadastro', ['as' => 'adm.produtos.produtos-cadastro', 'uses' => 'App\Http\Controllers\PageController@produtosCadastro']);
+	/* Cadastro/Insert */
+	Route::get('produtos/cadastro', ['as' => 'adm.produtos.produtos-cadastro', 'uses' => 'App\Http\Controllers\Adm\ProdutosController@pageCadProd']);
+	Route::post('produtos/insertProduto', ['as' => 'adm.produtos.insertProduto', 'uses' => 'App\Http\Controllers\Adm\ProdutosController@insertProduto']);
+	/* Edit/Update */
+	Route::get('produtos', ['as' => 'adm.produtos', 'uses' => 'App\Http\Controllers\Adm\ProdutosController@pageProd']);
+	Route::get('produto/edit/{id}', ['as' => 'adm.produtos.editProdbyId', 'uses' => 'App\Http\Controllers\Adm\ProdutosController@pageEditProdbyId']);
+	Route::put('produto/updateProduto', ['as' => 'adm.produtos.updateProduto', 'uses' => 'App\Http\Controllers\Adm\ProdutosController@updateProduto']);
+	/* Delete */
 	Route::get('produtos/excluir', ['as' => 'adm.produtos.produtos-excluir', 'uses' => 'App\Http\Controllers\PageController@produtosExcluir']);
+	/**************************** Configuração ********************************/
+	Route::get('config/empresa', ['as' => 'config.empresa', 'uses' => 'App\Http\Controllers\Config\ConfigController@pageConfig']);
+	Route::put('config/empresa/update', ['as' => 'config.empresa.update', 'uses' => 'App\Http\Controllers\Config\ConfigController@updateConfig']);
+
+	/**************************** Estoque ********************************/
+	Route::get('estoque', ['as' => 'adm.estoque', 'uses' => 'App\Http\Controllers\Adm\EstoqueController@pageEstoque']);
+	Route::get('estoque/cadastro', ['as' => 'adm.estoque.entrada', 'uses' => 'App\Http\Controllers\Adm\EstoqueController@pageEntradaEstoque']);
+	Route::get('estoque/ajustar', ['as' => 'adm.estoque.ajustar', 'uses' => 'App\Http\Controllers\Adm\EstoqueController@pageAjustarEstoque']);
+	Route::post('estoque/buscaProd/byCod', ['as' => 'adm.produtos.buscaProd', 'uses' => 'App\Http\Controllers\Adm\ProdutosController@selectProdbyCod']);
+
+	
 	/** 
 	 * 
 	 * 

@@ -21,9 +21,7 @@
                 </div>
                 <div class="button-action">
                     <a href="{{ route('adm.fornecedores.cadFornecedores') }}" ">
-                    <button type=" button" class="btn btn-primary">
-                        Cadastrar
-                        </button>
+                    <button type=" button" class="btn btn-primary">Novo Fornecedor</button>
                     </a>
                 </div>
             </div>

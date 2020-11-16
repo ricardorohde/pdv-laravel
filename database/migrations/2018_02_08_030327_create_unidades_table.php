@@ -17,6 +17,7 @@ class CreateUnidadesTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('unidade');
+            $table->string('status',1);
         });
     }
 

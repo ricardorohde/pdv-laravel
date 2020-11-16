@@ -67,9 +67,9 @@
                         <li class="nav-link">
                             <a href="{{ route('profile.edit') }}" class="nav-item dropdown-item">{{ __('Conta') }}</a>
                         </li>
-                        {{-- <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Configurações') }}</a>
-                        </li> --}}
+                        <li class="nav-link">
+                            <a href="{{ route('config.empresa') }}" class="nav-item dropdown-item">{{ __('Configurações') }}</a>
+                        </li>
                         <li class="dropdown-divider"></li>
                         <li class="nav-link">
                             <a href="{{ route('logout') }}" class="nav-item dropdown-item"

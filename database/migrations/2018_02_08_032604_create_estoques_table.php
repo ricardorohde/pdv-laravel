@@ -20,7 +20,7 @@ class CreateEstoquesTable extends Migration
             $table->string('categoria');
             $table->string('nome');
             $table->string('marca');
-            $table->string('descricao');
+            $table->string('descricao')->nullable();
             $table->string('tecido')->nullable();
             $table->integer('estoque');
             $table->string('unidade');
